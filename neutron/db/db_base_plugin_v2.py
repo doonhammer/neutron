@@ -1204,15 +1204,26 @@ class NeutronDbPluginV2(db_base_plugin_common.DbBasePluginCommon,
             else:
                 db_port = self._create_port_with_mac(
                     context, network_id, port_data, p['mac_address'])
-            # jmcdowall allowing port to be created with no fixed_ip address
+            # jmcdowall begin hack
+            # allowing port to be created with no fixed_ip address
             #
             fixed_ips = p['fixed_ips']
-            if fixed_ips[0] != {}:
-                LOG.info("creating IPAM fixed_ips %s\n", fixed_ips)
+            LOG.info("Value of fixed IPS is: %s\n", fixed_ips)
+            if fixed_ips:
+                #
+                # Fixed IPS only exist for network ports
+                #
+                if fixed_ips[0] != {}:
+                    LOG.info("creating IPAM fixed_ips %s\n", fixed_ips)
+                    ips = self.ipam.allocate_ips_for_port_and_store(context, port,
+                                                            port_id)
+                else:
+                    LOG.info("Not creating IPAN fixed_ips %s\n",fixed_ips)
+            else:
                 ips = self.ipam.allocate_ips_for_port_and_store(context, port,
                                                             port_id)
-            else:
-                LOG.info("Not creating IPAN fixed_ips %s\n",fixed_ips)
+            #
+            # jmcdowall end hack
             if ('dns-integration' in self.supported_extension_aliases and
                 'dns_name' in p):
                 dns_assignment = []
