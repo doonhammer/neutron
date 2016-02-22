@@ -1208,7 +1208,7 @@ class NeutronDbPluginV2(db_base_plugin_common.DbBasePluginCommon,
             #
             fixed_ips = p['fixed_ips']
             if fixed_ips[0] != {}:
-                LOG.info("creating IPAM fixed_ips %s\n", fixed_ips))
+                LOG.info("creating IPAM fixed_ips %s\n", fixed_ips)
                 ips = self.ipam.allocate_ips_for_port_and_store(context, port,
                                                             port_id)
             else:
