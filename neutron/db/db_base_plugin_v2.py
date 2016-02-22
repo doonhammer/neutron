@@ -1209,6 +1209,7 @@ class NeutronDbPluginV2(db_base_plugin_common.DbBasePluginCommon,
             #
             is_router_port = (
                 p['device_owner'] in constants.ROUTER_INTERFACE_OWNERS_SNAT)
+            LOG.info("Is it a router port: %s\n",is_router_port)
             if is_router_port:
                 LOG.info("is router port")
                 ips = self.ipam.allocate_ips_for_port_and_store(context, port,
