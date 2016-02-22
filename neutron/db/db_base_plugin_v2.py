@@ -1207,7 +1207,7 @@ class NeutronDbPluginV2(db_base_plugin_common.DbBasePluginCommon,
             # jmcdowall begin hack
             # allowing port to be created with no fixed_ip address
             #
-            fixed_ips = p['fixed_ips']
+            fixed_ips = db_port['fixed_ips']
             LOG.info("Value of fixed IPS is: %s\n", fixed_ips)
             if fixed_ips:
                 #
