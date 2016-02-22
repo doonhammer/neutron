@@ -1208,8 +1208,10 @@ class NeutronDbPluginV2(db_base_plugin_common.DbBasePluginCommon,
             # allowing port to be created with no fixed_ip address
             #
             is_router_port = (
-                p['device_owner'] in constants.ROUTER_INTERFACE_OWNERS_SNAT)
+                p['device_owner'] in constants.ROUTER_PORT_OWNERS)
             LOG.info("Is it a router port: %s\n",is_router_port)
+            LOG.info("Device Owner is: %s\n",p['device_owner'])
+            LOG.info("Router port Owners: %s\n", constants.ROUTER_PORT_OWNERS)
             if is_router_port:
                 LOG.info("is router port")
                 ips = self.ipam.allocate_ips_for_port_and_store(context, port,
