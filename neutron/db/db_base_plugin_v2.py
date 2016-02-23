@@ -1210,7 +1210,7 @@ class NeutronDbPluginV2(db_base_plugin_common.DbBasePluginCommon,
             is_router_port = (
                 p['device_owner'] in constants.ROUTER_PORT_OWNERS)
             is_compute_port  = (
-                p['device_owner'] in constants.DEVICE_OWNER_COMPUTE_PREFIX + "nova")
+                p['device_owner'] == constants.DEVICE_OWNER_COMPUTE_PREFIX + "nova")
             LOG.info("Is it a router port: %s\n",is_router_port)
             LOG.info("Is it a compute port: %s\n",is_compute_port)            
             LOG.info("Device Owner is: %s\n",p['device_owner'])
