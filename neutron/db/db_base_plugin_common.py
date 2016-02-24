@@ -239,7 +239,7 @@ class DbBasePluginCommon(common_db_mixin.CommonDbMixin):
     def _get_sfi(self, context, id):
         try:
             sfi = self._get_by_id(context, models_v2.Sfi, id) 
-       except exc.NoResultFound:
+        except exc.NoResultFound:
             raise n_exc.PortNotFound(sfi_id=id)
         return sfi
 
