@@ -181,7 +181,22 @@ class DbBasePluginCommon(common_db_mixin.CommonDbMixin):
                 attributes.PORTS, res, port)
         return self._fields(res, fields)
 
-    def _get_network(self, context, id):
+    def _make_sfi_dict(self, sfi, fields=None,
+                        process_extensions=False):
+        res = {"id": sfi["id"],
+               'name': sfi['name'],
+               "network_id": sfi["network_id"],
+               'tenant_id': sfi['tenant_id'],
+               'in_port_id': sfi['in_port_id'],
+               'out_port_id': sfi['out_port_id'],
+               'firewall_id': sfi['firewall_id'],
+               'application_id': sfi['application_id'],
+               "status": sfi["status"],
+                "device_owner": port["device_owner"]}
+
+        return self._fields(res, fields)
+ 
+   def _get_network(self, context, id):
         try:
             network = self._get_by_id(context, models_v2.Network, id)
         except exc.NoResultFound:
@@ -217,6 +232,16 @@ class DbBasePluginCommon(common_db_mixin.CommonDbMixin):
         except exc.NoResultFound:
             raise n_exc.PortNotFound(port_id=id)
         return port
+
+    #
+    # TODO-JED add SfiNotFound exception
+    #
+    def _get_sfi(self, context, id):
+        try:
+            sfi = self._get_by_id(context, models_v2.Sfi, id) 
+       except exc.NoResultFound:
+            raise n_exc.PortNotFound(sfi_id=id)
+        return sfi
 
     def _get_dns_by_subnet(self, context, subnet_id):
         dns_qry = context.session.query(models_v2.DNSNameServer)
