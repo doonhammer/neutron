@@ -196,7 +196,7 @@ class DbBasePluginCommon(common_db_mixin.CommonDbMixin):
 
         return self._fields(res, fields)
  
-   def _get_network(self, context, id):
+    def _get_network(self, context, id):
         try:
             network = self._get_by_id(context, models_v2.Network, id)
         except exc.NoResultFound:
