@@ -176,7 +176,6 @@ class Sfi(model_base.HasStandardAttributes, model_base.BASEV2,
     status = sa.Column(sa.String(16), nullable=False)
     device_owner = sa.Column(sa.String(attr.DEVICE_OWNER_MAX_LEN),
                              nullable=False)
-    )
 
     def __init__(self, id=None, tenant_id=None, name=None, network_id=None,
                  in_port_id=None, out_port_id=None, 
