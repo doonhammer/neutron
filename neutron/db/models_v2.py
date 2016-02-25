@@ -167,10 +167,8 @@ class Sfi(model_base.HasStandardAttributes, model_base.BASEV2,
     name = sa.Column(sa.String(attr.NAME_MAX_LEN))
     network_id = sa.Column(sa.String(36), sa.ForeignKey("networks.id"),
                            nullable=False)
-    in_port_id = sa.Column(sa.String(36), sa.ForeignKey("port.id"),
-                           nullable=False)
-    out_port_id = sa.Column(sa.String(36), sa.ForeignKey("port.id"),
-                           nullable=False)
+    in_port_id =  sa.Column(sa.String(attr.DEVICE_ID_MAX_LEN), nullable=False)
+    out_port_id =  sa.Column(sa.String(attr.DEVICE_ID_MAX_LEN), nullable=False)
     firewall_id = sa.Column(sa.String(attr.DEVICE_ID_MAX_LEN), nullable=False)
     application_id = sa.Column(sa.String(attr.DEVICE_ID_MAX_LEN), nullable=False)
     status = sa.Column(sa.String(16), nullable=False)
