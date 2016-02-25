@@ -181,7 +181,7 @@ class Sfi(model_base.HasStandardAttributes, model_base.BASEV2,
                  in_port_id=None, out_port_id=None, 
                  firewall_id=None,
                  application_id=None, device_owner=None,status=None):
-        super(Port, self).__init__()
+        super(Sfi, self).__init__()
         self.id = id
         self.tenant_id = tenant_id
         self.name = name
