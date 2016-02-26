@@ -46,7 +46,7 @@ from neutron.db.migration.alembic_migrations import portsec_init_ops
 from neutron.db.migration.alembic_migrations import secgroup_init_ops
 from neutron.db.migration.alembic_migrations import vmware_init_ops
 from neutron.db.migration.alembic_migrations import vpn_init_ops
-
+from neutron.db.migration.alembic_migrations import sfi_init_ops
 
 def upgrade():
     agent_init_ops.upgrade()
@@ -70,3 +70,4 @@ def upgrade():
     vmware_init_ops.upgrade()
     nuage_init_opts.upgrade()
     nsxv_initial_opts.upgrade()
+    sfi_init_ops.upgrade()
