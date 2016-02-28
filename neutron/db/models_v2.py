@@ -171,14 +171,13 @@ class Sfi(model_base.HasStandardAttributes, model_base.BASEV2,
     out_port_id =  sa.Column(sa.String(attr.DEVICE_ID_MAX_LEN), nullable=False)
     firewall_id = sa.Column(sa.String(attr.DEVICE_ID_MAX_LEN), nullable=False)
     application_id = sa.Column(sa.String(attr.DEVICE_ID_MAX_LEN), nullable=False)
-    status = sa.Column(sa.String(16), nullable=False)
     device_owner = sa.Column(sa.String(attr.DEVICE_OWNER_MAX_LEN),
                              nullable=False)
 
     def __init__(self, id=None, tenant_id=None, name=None, network_id=None,
                  in_port_id=None, out_port_id=None, 
                  firewall_id=None,
-                 application_id=None, device_owner=None,status=None):
+                 application_id=None, device_owner=None):
         super(Sfi, self).__init__()
         self.id = id
         self.tenant_id = tenant_id
@@ -189,8 +188,6 @@ class Sfi(model_base.HasStandardAttributes, model_base.BASEV2,
         self.firewall_id = firewall_id
         self.application_id = application_id
         self.device_owner = device_owner
-         # Note(arosen): status must be set last as an event is triggered on!
-        self.status = status
 
 class DNSNameServer(model_base.BASEV2):
     """Internal representation of a DNS nameserver."""

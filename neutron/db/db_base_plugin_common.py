@@ -191,9 +191,7 @@ class DbBasePluginCommon(common_db_mixin.CommonDbMixin):
                'out_port_id': sfi['out_port_id'],
                'firewall_id': sfi['firewall_id'],
                'application_id': sfi['application_id'],
-               'status': sfi['status'],
-               'device_owner': port['device_owner'],
-               'tenant_id': port['tenant_id']        }
+               'device_owner': sfi['device_owner'] }
 
         return self._fields(res, fields)
  

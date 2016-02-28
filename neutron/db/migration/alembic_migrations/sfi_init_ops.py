@@ -12,4 +12,7 @@ def upgrade():
         sa.Column('application_id', sa.String(length=255), nullable=True),
         sa.Column('in_port_id', sa.String(length=255), nullable=True),
         sa.Column('out_port_id', sa.String(length=255), nullable=True),
+        sa.Column('status', sa.String(length=16), nullable=True),
+        sa.Column('device_owner', sa.String(length=255), nullable=True),
+        sa.Column('standard_attr_id',sa.BigInteger()),
         sa.PrimaryKeyConstraint('id'))
