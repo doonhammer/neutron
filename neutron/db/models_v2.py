@@ -167,26 +167,22 @@ class Sfi(model_base.HasStandardAttributes, model_base.BASEV2,
     name = sa.Column(sa.String(attr.NAME_MAX_LEN))
     network_id = sa.Column(sa.String(36), sa.ForeignKey("networks.id"),
                            nullable=False)
+    app_port_id = sa.Column(sa.String(attr.DEVICE_ID_MAX_LEN), nullable=False)
     in_port_id =  sa.Column(sa.String(attr.DEVICE_ID_MAX_LEN), nullable=False)
     out_port_id =  sa.Column(sa.String(attr.DEVICE_ID_MAX_LEN), nullable=False)
-    firewall_id = sa.Column(sa.String(attr.DEVICE_ID_MAX_LEN), nullable=False)
-    application_id = sa.Column(sa.String(attr.DEVICE_ID_MAX_LEN), nullable=False)
     device_owner = sa.Column(sa.String(attr.DEVICE_OWNER_MAX_LEN),
                              nullable=False)
 
     def __init__(self, id=None, tenant_id=None, name=None, network_id=None,
-                 in_port_id=None, out_port_id=None, 
-                 firewall_id=None,
-                 application_id=None, device_owner=None):
+                 app_port_id=None, in_port_id=None, out_port_id=None,device_owner=None):
         super(Sfi, self).__init__()
         self.id = id
         self.tenant_id = tenant_id
         self.name = name
         self.network_id = network_id
+        self.app_port_id = app_port_id
         self.in_port_id = in_port_id
         self.out_port_id = out_port_id
-        self.firewall_id = firewall_id
-        self.application_id = application_id
         self.device_owner = device_owner
 
 class DNSNameServer(model_base.BASEV2):
