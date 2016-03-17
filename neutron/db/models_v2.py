@@ -164,6 +164,7 @@ class Sfi(model_base.HasStandardAttributes, model_base.BASEV2,
            HasId, HasTenant):
     """Represents a Service Function on a Neutron v2 network."""
 
+    id =  sa.Column(sa.String(attr.DEVICE_ID_MAX_LEN), nullable=False)
     name = sa.Column(sa.String(attr.NAME_MAX_LEN))
     network_id = sa.Column(sa.String(36), sa.ForeignKey("networks.id"),
                            nullable=False)
